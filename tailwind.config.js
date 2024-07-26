@@ -8,9 +8,9 @@ export default {
             },
             fontFamily: {
                 "hanken-grotesk": ["Hanken Grotesk", "sans-serif"],
-            },
-            fontSize: {
-                "3xs": "0.425rem",
+                fontSize: {
+                    '2xs': '0.625rem',
+                },
             },
         },
     },

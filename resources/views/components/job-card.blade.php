@@ -1,25 +1,20 @@
 @props([
-    'companyName',
-    'jobTitle',
-    'duration',
-    'salary',
-    'tags',
-    'companyLogo',
+    'job'
 ])
-<div class="p-4 bg-white/5 rounded-xl flex flex-col text-center">
-    <div class="self-start text-sm">
-        {{ $companyName }}
+<x-card class="flex-col text-center">
+    <div class="self-start text-sm ">
+        {{ $job->employer->name }}
     </div>
-    <div class="py-8 font-bold">
-        <h4>{{ $jobTitle }}</h4>
-        <p>{{ $duration . ' - ' . $salary }}</p>
+    <div class="py-8 ">
+        <h4 class="group-hover:text-blue-600 text-xl font-bold group transition-colors duration-300">{{ $job->title }}</h4>
+        <p class="text-sm mt-4">{{ $job->location }} - {{ $job->salary }}</p>
     </div>
     <div class="flex justify-between items-center mt-auto">
         <div class="flex gap-2 ">
-            @foreach ($tags as $tag)
-                <x-tag size="3xs">{{ $tag }}</x-tag>
+            @foreach ($job->tags as $tag)
+                <x-tag size="2xs">{{ $tag->name }}</x-tag>
             @endforeach
         </div>
-        <x-employer-logo src="{{ $companyLogo }}" alt="{{ $companyName }}" />
+        <x-employer-logo src="{{ $job->employer->logo }}" alt="{{ $job->employer->name }}" />
     </div>
-</div>
+</x-card>

@@ -6,13 +6,13 @@
     <title>Pixel Positions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
     @vite(['resources/js/app.js'])
 </head>
-<body class=" bg-black text-white min-h-screen min-w-screen hanken-grotesk">
-    <div class="px-10 ">
+<body class=" bg-black text-white font-hanken-grotesk flex justify-center">
+    <div class="px-10 min-h-screen min-w-[96vw]">
         <!-- Navigation -->
-        <nav class="flex justify-between items-center py-4 border-b border-white/10 ">
+        <nav class="flex justify-between items-center py-4 border-b border-white/10 min-w-screen">
             <div>
                 <a href="">
                     <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="Pixel Positions">
@@ -31,7 +31,7 @@
         </nav>
 
         <!-- Main Content -->
-        <main class="mt-10 max-w-[986px]" >
+        <main class="mt-10" >
             {{ $slot }}
         </main>
     </div>
