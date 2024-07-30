@@ -12,7 +12,7 @@
     <div class="flex justify-between items-center mt-auto">
         <div class="flex gap-2 ">
             @foreach ($job->tags as $tag)
-                <x-tag size="2xs">{{ $tag->name }}</x-tag>
+                <x-tag size="2xs" href="{{url('tags/'.$tag->name)}}">{{ $tag->name }}</x-tag>
             @endforeach
         </div>
         <x-employer-logo src="{{ $job->employer->logo }}" alt="{{ $job->employer->name }}" />

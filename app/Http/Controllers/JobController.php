@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
-use App\Http\Requests\StoreJobRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\Tag;
 
@@ -26,15 +26,39 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobs.create', [
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreJobRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'title' => 'required',
+            'type' => 'required',
+            'schedule' => 'required',
+            'salary' => 'required',
+            'company' => 'required',
+            'tags' => 'required',
+            'location' => 'required',
+        ]);
+
+        $job = Job::create([
+            'title' => $validate['title'],
+            'schedule' => $validate['schedule'],
+            'salary' => $validate['salary'],
+            'company' => $validate['company'],
+            'location' => $validate['type'].' '.$validate['location'],
+            'employer_id' => auth()->user()->employer->id,
+            'url' => auth()->user()->employer->logo,
+        ]);
+
+        $job->tags()->attach($validate['tags']);
+
+        return redirect()->route('jobs.index');
     }
 
     /**

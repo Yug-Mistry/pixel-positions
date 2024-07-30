@@ -9,12 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
     @vite(['resources/js/app.js'])
 </head>
-<body class=" bg-black text-white font-hanken-grotesk flex justify-center">
+<body class=" bg-black text-white font-hanken-grotesk flex justify-center pb-20">
     <div class="px-10 min-h-screen min-w-[96vw]">
         <!-- Navigation -->
         <nav class="flex justify-between items-center py-4 border-b border-white/10 min-w-screen">
             <div>
-                <a href="">
+                <a href="/">
                     <img src="{{ Vite::asset('resources/images/logo.svg') }}" alt="Pixel Positions">
                 </a>
             </div>
@@ -25,8 +25,23 @@
                 <a href="">Companies</a>
             </div>
             <div class = "flex items-center space-x-2">
-                <x-square color="blue"  />
-                <a href="">Post a job</a>
+                @auth
+                    <div class = "flex items-center space-x-2">
+                        <x-square color="blue"  />
+                        <a href="">Post a job</a>
+                    </div>
+                    <div class = "flex items-center space-x-2">
+                        <x-square color="blue"  />
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Logout</button>
+                        </form>
+                    </div>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('register') }}">Register</a>
+                @endauth
             </div>
         </nav>
 

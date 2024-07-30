@@ -26,7 +26,7 @@
             <div class="flex justify-between items-center">
                 <div class="flex gap-2 ">
                     @foreach ($job->tags as $tag)
-                        <x-tag>{{ $tag->name }}</x-tag>
+                        <x-tag href="{{url('tags/' . $tag->name)}}">{{ $tag->name }}</x-tag>
                     @endforeach
                 </div>
             </div>

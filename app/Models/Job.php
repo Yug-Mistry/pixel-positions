@@ -11,7 +11,7 @@ class Job extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'employer_id'];
+    protected $fillable = ['title', 'description', 'employer_id','location', 'salary', 'url','schedule'];
 
     public function tag(string $name): bool
     {
